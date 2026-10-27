@@ -1,0 +1,28 @@
+[package]
+name        = "pala"
+version     = "0.3.0"
+edition     = "2021"
+license     = "MIT OR Apache-2.0"
+authors     = ["Nicholas Kloster"]
+description = "Filesystem-agnostic file carving and data recovery."
+repository  = "https://github.com/Ablation-Tool/PALA"
+
+[[bin]]
+name = "pala"
+path = "src/main.rs"
+
+[dependencies]
+anyhow     = "1"
+memchr     = "2"
+memmap2    = "0.9"
+rayon      = "1"
+serde      = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2       = "0.10"
+zip        = { version = "9", default-features = false, features = ["deflate"] }
+
+[profile.release]
+opt-level = 3
+lto       = true
+strip     = true
+codegen-units = 1

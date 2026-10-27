@@ -1,0 +1,69 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: Check formatting
+        run: cargo fmt --check
+
+      - name: Lint all targets
+        run: cargo clippy --locked --all-targets -- -D warnings
+
+      - name: Run Rust unit tests
+        run: cargo test --locked
+
+      - name: Build release binary
+        run: cargo build --release --locked
+
+      - name: Install integration test dependencies
+        run: pip install Pillow
+
+      - name: Run full integration suite
+        run: python3 tests/test_pala.py
+
+      - name: Stage artifact
+        run: cp target/release/pala pala-linux-x86_64
+
+      - name: Verify artifact size
+        run: |
+          SIZE=$(stat -c%s pala-linux-x86_64)
+          echo "pala binary: ${SIZE} bytes"
+          [ "$SIZE" -lt 2097152 ]
+
+      - name: SHA-256 checksum
+        run: sha256sum pala-linux-x86_64 > pala-linux-x86_64.sha256
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            pala-linux-x86_64
+            pala-linux-x86_64.sha256
+          generate_release_notes: true
+          draft: false
+          prerelease: false
