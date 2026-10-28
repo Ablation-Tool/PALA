@@ -5,12 +5,12 @@
 
 | Capability | Description |
 |:---|:---|
-| **Signature Carving** | Finds and validates known file contents in raw images and block devices, without relying on filenames or a working filesystem. |
-| **Deleted-Inode Recovery** | Uses Sleuth Kit `fls` and `icat` to recover files whose filesystem metadata remains. |
-| **NTFS Cluster Runs** | Reassembles non-resident files from MFT `$DATA` run lists. |
-| **FAT32 Recovery** | Walks deleted directory entries and follows available cluster chains. |
-| **Fragment Merging** | Joins adjacent candidates and configured zero-filled gaps. |
-| **Container Expansion** | Extracts members from ZIP, DOCX, XLSX, PPTX, JAR, and APK files with resource limits. |
+| [**Signature Carving**](docs/operations.md#recovery-methods) | Finds and validates known file contents in raw images and block devices, without relying on filenames or a working filesystem. |
+| [**Deleted-Inode Recovery**](docs/operations.md#recovery-methods) | Uses Sleuth Kit `fls` and `icat` to recover files whose filesystem metadata remains. |
+| [**NTFS Cluster Runs**](docs/operations.md#recovery-methods) | Reassembles non-resident files from MFT `$DATA` run lists. |
+| [**FAT32 Recovery**](docs/operations.md#recovery-methods) | Walks deleted directory entries and follows available cluster chains. |
+| [**Fragment Merging**](docs/operations.md#recovery-methods) | Joins adjacent candidates and configured zero-filled gaps. |
+| [**Container Expansion**](docs/operations.md#zip-extraction-limits) | Extracts members from ZIP, DOCX, XLSX, PPTX, JAR, and APK files with resource limits. |
 
 </details>
 
@@ -19,13 +19,13 @@
 
 | Category | Types |
 |:---|:---|
-| **Media** | JPEG · PNG · GIF · BMP · TIFF · PSD · HEIC · AVIF · MP4 · MKV · MP3 · FLAC · OGG |
-| **Documents** | PDF · RTF · OLE2 · DOCX · XLSX · PPTX · EML |
-| **Archives** | ZIP · gzip · 7-Zip · RAR4/5 · TAR · XZ · bzip2 · Zstandard |
-| **Data & Code** | SQLite · ESE · ELF · PE · DEX · ART |
-| **Forensics** | EVTX · registry hives · LNK · Prefetch · memory dumps · USN records · PCAP |
-| **Firmware** | SquashFS · JFFS2 · UBIFS · U-Boot · FIT/DTB · cramfs |
-| **Other** | NTFS · FAT32 · ext2/3/4 · APFS · LUKS · BitLocker · VMDK · VHDX · ISO 9660 |
+| [**Media**](docs/operations.md#built-in-file-types) | JPEG · PNG · GIF · BMP · TIFF · PSD · HEIC · AVIF · MP4 · MKV · MP3 · FLAC · OGG |
+| [**Documents**](docs/operations.md#built-in-file-types) | PDF · RTF · OLE2 · DOCX · XLSX · PPTX · EML |
+| [**Archives**](docs/operations.md#built-in-file-types) | ZIP · gzip · 7-Zip · RAR4/5 · TAR · XZ · bzip2 · Zstandard |
+| [**Data & Code**](docs/operations.md#built-in-file-types) | SQLite · ESE · ELF · PE · DEX · ART |
+| [**Forensics**](docs/operations.md#built-in-file-types) | EVTX · registry hives · LNK · Prefetch · memory dumps · USN records · PCAP |
+| [**Firmware**](docs/operations.md#built-in-file-types) | SquashFS · JFFS2 · UBIFS · U-Boot · FIT/DTB · cramfs |
+| [**Other**](docs/operations.md#built-in-file-types) | NTFS · FAT32 · ext2/3/4 · APFS · LUKS · BitLocker · VMDK · VHDX · ISO 9660 |
 
 The authoritative signature list is `pala --list`.
 
@@ -36,65 +36,12 @@ The authoritative signature list is `pala --list`.
 
 | Capability | Description |
 |:---|:---|
-| **JSON Reports** | Offsets, sizes, recovery quality, metadata, source, and SHA-256 hashes for scripts and AI-assisted review. |
-| **Metadata Extraction** | JPEG EXIF/GPS, PNG text, ELF/PE headers, NTFS details, and SQLite information. |
-| **Checkpoints** | Resume interrupted scans without duplicating previous recoveries. |
-| **Custom Signatures** | Add proprietary formats with a validated PALA v1 corpus. |
-| **Targeted Recovery** | Filter by type, size, alignment, count, or operational preset. |
-| **Safe Output** | Read-only source access, non-overwriting files, private Unix permissions, and raw-device safety checks. |
-
-</details>
-
-## Setup & About
-
-<details>
-<summary>AI Agent Install</summary>
-
-```text
-Build PALA from https://github.com/Ablation-Tool/PALA for me.
-
-Check for a stable Rust toolchain with `rustc --version` and `cargo --version`.
-Clone the repository if it is absent. For an existing checkout, verify its
-origin and check for uncommitted changes. Do not reset, clean, overwrite, or
-pull over local changes. Stop and ask if the remote differs or the checkout
-is dirty.
-
-Review Cargo.toml and confirm that Cargo.lock is present. Build from the
-checkout with:
-
-  cargo build --release --locked
-
-Verify with `target/release/pala --list`. Stop on missing prerequisites,
-build errors, or verification failures. Do not install toolchains or system
-packages, use sudo, install PALA globally, or use alternate sources without
-my approval.
-
-Do not scan disks or images, access raw devices, or create recovery output
-during setup. Sleuth Kit and recovery work require a separate request with
-authorized source and destination paths. Report the checkout, binary path,
-Rust version, and verification result.
-```
-
-</details>
-
-<details>
-<summary>Manual Install</summary>
-
-**Requirements:** Rust stable. Sleuth Kit is optional for `--filesystem`.
-
-```bash
-cargo build --release --locked
-```
-
-Binary: `target/release/pala`
-
-Or install locally:
-
-```bash
-cargo install --path . --locked
-```
-
-PALA does not need Python or an AI service at runtime.
+| [**JSON Reports**](docs/operations.md#json-report) | Offsets, sizes, recovery quality, metadata, source, and SHA-256 hashes for scripts and AI-assisted review. |
+| [**Metadata Extraction**](docs/operations.md#output-and-recovery-quality) | JPEG EXIF/GPS, PNG text, ELF/PE headers, NTFS details, and SQLite information. |
+| [**Checkpoints**](docs/operations.md#checkpoints-and-resume) | Resume interrupted scans without duplicating previous recoveries. |
+| [**Custom Signatures**](docs/operations.md#custom-signatures) | Add proprietary formats with a validated PALA v1 corpus. |
+| [**Targeted Recovery**](docs/operations.md#command-line-reference) | Filter by type, size, alignment, count, or operational preset. |
+| [**Safe Output**](docs/operations.md#safety-first) | Read-only source access, non-overwriting files, private Unix permissions, and raw-device safety checks. |
 
 </details>
 
@@ -171,6 +118,59 @@ On Unix, new output directories use `0700`; recovered files and checkpoints use 
 - Raw-device post-processing is more limited than regular-image processing.
 - Some formats have reliable size parsers; others require conservative boundaries.
 - Recovered content is not proof of authenticity, safety, or forensic completeness.
+
+</details>
+
+## Setup & About
+
+<details>
+<summary>AI Agent Install</summary>
+
+```text
+Build PALA from https://github.com/Ablation-Tool/PALA for me.
+
+Check for a stable Rust toolchain with `rustc --version` and `cargo --version`.
+Clone the repository if it is absent. For an existing checkout, verify its
+origin and check for uncommitted changes. Do not reset, clean, overwrite, or
+pull over local changes. Stop and ask if the remote differs or the checkout
+is dirty.
+
+Review Cargo.toml and confirm that Cargo.lock is present. Build from the
+checkout with:
+
+  cargo build --release --locked
+
+Verify with `target/release/pala --list`. Stop on missing prerequisites,
+build errors, or verification failures. Do not install toolchains or system
+packages, use sudo, install PALA globally, or use alternate sources without
+my approval.
+
+Do not scan disks or images, access raw devices, or create recovery output
+during setup. Sleuth Kit and recovery work require a separate request with
+authorized source and destination paths. Report the checkout, binary path,
+Rust version, and verification result.
+```
+
+</details>
+
+<details>
+<summary>Manual Install</summary>
+
+**Requirements:** Rust stable. Sleuth Kit is optional for `--filesystem`.
+
+```bash
+cargo build --release --locked
+```
+
+Binary: `target/release/pala`
+
+Or install locally:
+
+```bash
+cargo install --path . --locked
+```
+
+PALA does not need Python or an AI service at runtime.
 
 </details>
 
