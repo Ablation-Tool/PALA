@@ -191,6 +191,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development standards and [SECURITY.m
 
 </details>
 
----
+<details>
+<summary>License</summary>
 
-**MIT OR Apache-2.0** · [License](LICENSE-MIT) · [License](LICENSE-APACHE)
+PALA is free and open-source software under **MIT OR Apache-2.0**, at your option. See the [MIT License](LICENSE-MIT) and [Apache License 2.0](LICENSE-APACHE) for the full terms.
+
+</details>
