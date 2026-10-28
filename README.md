@@ -48,6 +48,32 @@ The authoritative signature list is `pala --list`.
 ## Setup & About
 
 <details>
+<summary>AI Agent Install</summary>
+
+Hand this prompt to your AI coding agent. It builds PALA from the locked Rust dependency graph and stops before any recovery operation.
+
+```text
+Build PALA from https://github.com/Ablation-Tool/PALA for me.
+
+Check for a stable Rust toolchain with `rustc --version` and `cargo --version`.
+Clone the repository if it is not already present and build from that checkout
+with:
+
+  cargo build --release --locked
+
+Verify the binary by running `target/release/pala --list`. Report the checkout
+path, binary path, Rust version, and verification result.
+
+Keep Sleuth Kit optional and install it only if I separately request
+`--filesystem` support and approve the prerequisite installation. Do not use
+sudo, install PALA globally, scan a disk or image, access a raw device, or
+create recovery output during setup. Recovery requires a separate request with
+authorized source and destination paths.
+```
+
+</details>
+
+<details>
 <summary>Install</summary>
 
 **Requirements:** Rust stable. Sleuth Kit is optional for `--filesystem`.
