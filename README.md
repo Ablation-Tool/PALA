@@ -45,6 +45,8 @@ The authoritative signature list is `pala --list`.
 
 </details>
 
+## Operations
+
 <details>
 <summary>Quick Start</summary>
 
