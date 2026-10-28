@@ -17,15 +17,15 @@
 <details>
 <summary>File Formats</summary>
 
-| Category | Code | Types |
-|:---|:---|:---|
-| [**Media**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | JPEG · PNG · GIF · BMP · TIFF · PSD · HEIC · AVIF · MP4 · MKV · MP3 · FLAC · OGG |
-| [**Documents**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | PDF · RTF · OLE2 · DOCX · XLSX · PPTX · EML |
-| [**Archives**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | ZIP · gzip · 7-Zip · RAR4/5 · TAR · XZ · bzip2 · Zstandard |
-| [**Data & Code**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | SQLite · ESE · ELF · PE · DEX · ART |
-| [**Forensics**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | EVTX · registry hives · LNK · Prefetch · memory dumps · USN records · PCAP |
-| [**Firmware**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | SquashFS · JFFS2 · UBIFS · U-Boot · FIT/DTB · cramfs |
-| [**Other**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | NTFS · FAT32 · ext2/3/4 · APFS · LUKS · BitLocker · VMDK · VHDX · ISO 9660 |
+| Category | Types |
+|:---|:---|
+| [**Media**](docs/operations.md#built-in-file-types) | JPEG · PNG · GIF · BMP · TIFF · PSD · HEIC · AVIF · MP4 · MKV · MP3 · FLAC · OGG |
+| [**Documents**](docs/operations.md#built-in-file-types) | PDF · RTF · OLE2 · DOCX · XLSX · PPTX · EML |
+| [**Archives**](docs/operations.md#built-in-file-types) | ZIP · gzip · 7-Zip · RAR4/5 · TAR · XZ · bzip2 · Zstandard |
+| [**Data & Code**](docs/operations.md#built-in-file-types) | SQLite · ESE · ELF · PE · DEX · ART |
+| [**Forensics**](docs/operations.md#built-in-file-types) | EVTX · registry hives · LNK · Prefetch · memory dumps · USN records · PCAP |
+| [**Firmware**](docs/operations.md#built-in-file-types) | SquashFS · JFFS2 · UBIFS · U-Boot · FIT/DTB · cramfs |
+| [**Other**](docs/operations.md#built-in-file-types) | NTFS · FAT32 · ext2/3/4 · APFS · LUKS · BitLocker · VMDK · VHDX · ISO 9660 |
 
 The authoritative signature list is `pala --list`.
 
