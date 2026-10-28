@@ -74,7 +74,7 @@ authorized source and destination paths.
 </details>
 
 <details>
-<summary>Install</summary>
+<summary>Manual Install</summary>
 
 **Requirements:** Rust stable. Sleuth Kit is optional for `--filesystem`.
 
