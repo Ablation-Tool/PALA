@@ -54,19 +54,25 @@ The authoritative signature list is `pala --list`.
 Build PALA from https://github.com/Ablation-Tool/PALA for me.
 
 Check for a stable Rust toolchain with `rustc --version` and `cargo --version`.
-Clone the repository if it is not already present and build from that checkout
-with:
+Clone the repository if it is absent. For an existing checkout, verify its
+origin and check for uncommitted changes. Do not reset, clean, overwrite, or
+pull over local changes. Stop and ask if the remote differs or the checkout
+is dirty.
+
+Review Cargo.toml and confirm that Cargo.lock is present. Build from the
+checkout with:
 
   cargo build --release --locked
 
-Verify the binary by running `target/release/pala --list`. Report the checkout
-path, binary path, Rust version, and verification result.
+Verify with `target/release/pala --list`. Stop on missing prerequisites,
+build errors, or verification failures. Do not install toolchains or system
+packages, use sudo, install PALA globally, or use alternate sources without
+my approval.
 
-Keep Sleuth Kit optional and install it only if I separately request
-`--filesystem` support and approve the prerequisite installation. Do not use
-sudo, install PALA globally, scan a disk or image, access a raw device, or
-create recovery output during setup. Recovery requires a separate request with
-authorized source and destination paths.
+Do not scan disks or images, access raw devices, or create recovery output
+during setup. Sleuth Kit and recovery work require a separate request with
+authorized source and destination paths. Report the checkout, binary path,
+Rust version, and verification result.
 ```
 
 </details>
