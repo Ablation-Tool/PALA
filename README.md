@@ -3,29 +3,29 @@
 <details>
 <summary>Recovery Engine</summary>
 
-| Capability | Description |
-|:---|:---|
-| [**Signature Carving**](docs/operations.md#recovery-methods) | Finds and validates known file contents in raw images and block devices, without relying on filenames or a working filesystem. |
-| [**Deleted-Inode Recovery**](docs/operations.md#recovery-methods) | Uses Sleuth Kit `fls` and `icat` to recover files whose filesystem metadata remains. |
-| [**NTFS Cluster Runs**](docs/operations.md#recovery-methods) | Reassembles non-resident files from MFT `$DATA` run lists. |
-| [**FAT32 Recovery**](docs/operations.md#recovery-methods) | Walks deleted directory entries and follows available cluster chains. |
-| [**Fragment Merging**](docs/operations.md#recovery-methods) | Joins adjacent candidates and configured zero-filled gaps. |
-| [**Container Expansion**](docs/operations.md#zip-extraction-limits) | Extracts members from ZIP, DOCX, XLSX, PPTX, JAR, and APK files with resource limits. |
+| Capability | Code | Description |
+|:---|:---|:---|
+| [**Signature Carving**](docs/operations.md#recovery-methods) | [1](src/main.rs) | Finds and validates known file contents in raw images and block devices, without relying on filenames or a working filesystem. |
+| [**Deleted-Inode Recovery**](docs/operations.md#recovery-methods) | [1](src/main.rs) | Uses Sleuth Kit `fls` and `icat` to recover files whose filesystem metadata remains. |
+| [**NTFS Cluster Runs**](docs/operations.md#recovery-methods) | [1](src/main.rs) | Reassembles non-resident files from MFT `$DATA` run lists. |
+| [**FAT32 Recovery**](docs/operations.md#recovery-methods) | [1](src/main.rs) | Walks deleted directory entries and follows available cluster chains. |
+| [**Fragment Merging**](docs/operations.md#recovery-methods) | [1](src/main.rs) | Joins adjacent candidates and configured zero-filled gaps. |
+| [**Container Expansion**](docs/operations.md#zip-extraction-limits) | [1](src/main.rs) | Extracts members from ZIP, DOCX, XLSX, PPTX, JAR, and APK files with resource limits. |
 
 </details>
 
 <details>
 <summary>File Formats</summary>
 
-| Category | Types |
-|:---|:---|
-| [**Media**](docs/operations.md#built-in-file-types) | JPEG · PNG · GIF · BMP · TIFF · PSD · HEIC · AVIF · MP4 · MKV · MP3 · FLAC · OGG |
-| [**Documents**](docs/operations.md#built-in-file-types) | PDF · RTF · OLE2 · DOCX · XLSX · PPTX · EML |
-| [**Archives**](docs/operations.md#built-in-file-types) | ZIP · gzip · 7-Zip · RAR4/5 · TAR · XZ · bzip2 · Zstandard |
-| [**Data & Code**](docs/operations.md#built-in-file-types) | SQLite · ESE · ELF · PE · DEX · ART |
-| [**Forensics**](docs/operations.md#built-in-file-types) | EVTX · registry hives · LNK · Prefetch · memory dumps · USN records · PCAP |
-| [**Firmware**](docs/operations.md#built-in-file-types) | SquashFS · JFFS2 · UBIFS · U-Boot · FIT/DTB · cramfs |
-| [**Other**](docs/operations.md#built-in-file-types) | NTFS · FAT32 · ext2/3/4 · APFS · LUKS · BitLocker · VMDK · VHDX · ISO 9660 |
+| Category | Code | Types |
+|:---|:---|:---|
+| [**Media**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | JPEG · PNG · GIF · BMP · TIFF · PSD · HEIC · AVIF · MP4 · MKV · MP3 · FLAC · OGG |
+| [**Documents**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | PDF · RTF · OLE2 · DOCX · XLSX · PPTX · EML |
+| [**Archives**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | ZIP · gzip · 7-Zip · RAR4/5 · TAR · XZ · bzip2 · Zstandard |
+| [**Data & Code**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | SQLite · ESE · ELF · PE · DEX · ART |
+| [**Forensics**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | EVTX · registry hives · LNK · Prefetch · memory dumps · USN records · PCAP |
+| [**Firmware**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | SquashFS · JFFS2 · UBIFS · U-Boot · FIT/DTB · cramfs |
+| [**Other**](docs/operations.md#built-in-file-types) | [1](src/main.rs) | NTFS · FAT32 · ext2/3/4 · APFS · LUKS · BitLocker · VMDK · VHDX · ISO 9660 |
 
 The authoritative signature list is `pala --list`.
 
@@ -34,14 +34,14 @@ The authoritative signature list is `pala --list`.
 <details>
 <summary>Automation & Operations</summary>
 
-| Capability | Description |
-|:---|:---|
-| [**JSON Reports**](docs/operations.md#json-report) | Offsets, sizes, recovery quality, metadata, source, and SHA-256 hashes for scripts and AI-assisted review. |
-| [**Metadata Extraction**](docs/operations.md#output-and-recovery-quality) | JPEG EXIF/GPS, PNG text, ELF/PE headers, NTFS details, and SQLite information. |
-| [**Checkpoints**](docs/operations.md#checkpoints-and-resume) | Resume interrupted scans without duplicating previous recoveries. |
-| [**Custom Signatures**](docs/operations.md#custom-signatures) | Add proprietary formats with a validated PALA v1 corpus. |
-| [**Targeted Recovery**](docs/operations.md#command-line-reference) | Filter by type, size, alignment, count, or operational preset. |
-| [**Safe Output**](docs/operations.md#safety-first) | Read-only source access, non-overwriting files, private Unix permissions, and raw-device safety checks. |
+| Capability | Code | Description |
+|:---|:---|:---|
+| [**JSON Reports**](docs/operations.md#json-report) | [1](src/main.rs) | Offsets, sizes, recovery quality, metadata, source, and SHA-256 hashes for scripts and AI-assisted review. |
+| [**Metadata Extraction**](docs/operations.md#output-and-recovery-quality) | [1](src/main.rs) | JPEG EXIF/GPS, PNG text, ELF/PE headers, NTFS details, and SQLite information. |
+| [**Checkpoints**](docs/operations.md#checkpoints-and-resume) | [1](src/main.rs) | Resume interrupted scans without duplicating previous recoveries. |
+| [**Custom Signatures**](docs/operations.md#custom-signatures) | [1](src/corpus.rs) | Add proprietary formats with a validated PALA v1 corpus. |
+| [**Targeted Recovery**](docs/operations.md#command-line-reference) | [1](src/main.rs) | Filter by type, size, alignment, count, or operational preset. |
+| [**Safe Output**](docs/operations.md#safety-first) | [1](src/main.rs) | Read-only source access, non-overwriting files, private Unix permissions, and raw-device safety checks. |
 
 </details>
 
