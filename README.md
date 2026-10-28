@@ -50,8 +50,6 @@ The authoritative signature list is `pala --list`.
 <details>
 <summary>AI Agent Install</summary>
 
-Hand this prompt to your AI coding agent. It builds PALA from the locked Rust dependency graph and stops before any recovery operation.
-
 ```text
 Build PALA from https://github.com/Ablation-Tool/PALA for me.
 
