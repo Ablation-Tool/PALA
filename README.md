@@ -27,8 +27,6 @@
 | [**Firmware**](docs/operations.md#built-in-file-types) | SquashFS · JFFS2 · UBIFS · U-Boot · FIT/DTB · cramfs |
 | [**Other**](docs/operations.md#built-in-file-types) | NTFS · FAT32 · ext2/3/4 · APFS · LUKS · BitLocker · VMDK · VHDX · ISO 9660 |
 
-See [Built-in file types](docs/operations.md#built-in-file-types) for the complete reference, or run `pala --list` for the authoritative signature list.
-
 </details>
 
 <details>
